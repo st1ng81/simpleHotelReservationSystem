@@ -25,4 +25,6 @@ test:
 
 production:
   <<: *default
+  username: postgres
+  password: 
   # database: db/production.sqlite3
