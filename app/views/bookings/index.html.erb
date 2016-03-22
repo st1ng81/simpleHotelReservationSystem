@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bookings</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Lodge</th>
+      <th>Room Type</th>
+      <th>Room</th>
+      <th>Checkin Date</th>
+      <th>Checkin Time</th>
+      <th>Checkout_date</th>
+      <th>Checkout_time</th>
+      <th>Total Amount</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.lodge.name %></td>
+        <td><%= booking.room.room_type.room_type %></td>
+        <td><%= booking.room.room_number %></td>
+        <td><%= booking.checkin_date %></td>
+        <td><%= booking.checkin_time.strftime("%H : %M : %S") %></td>
+        <td><%= booking.checout_date %></td>
+        <td><%= booking.checkout_time.strftime("%H : %M : %S") %></td>
+        <td><i class="fa fa-inr"></i><%= booking.total_amount %></td>
+        <td><%= booking.status %></td>
+        <td><%= link_to 'Show', booking %></td>
+        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+        <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Booking', new_booking_path %>

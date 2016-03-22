@@ -1,0 +1,50 @@
+<%= form_for(@room) do |f| %>
+  <% if @room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
+
+      <ul>
+      <% @room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class="table">
+    <tr>
+      <td><%= f.label "room_number" %></td>
+      <td><%= f.text_field "room_number"%></td>
+    </tr>
+    <tr>
+      <td><%= f.label "lodge_id", "Lodge name" %></td>
+      <td><%= f.collection_select(:lodge_id, Lodge.all, :id, :name) %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "room_type_id", "Room Type" %></td>
+      <td><%= f.collection_select(:room_type_id, RoomType.all, :id, :room_type) %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "room_occupants" %></td>
+      <td><%= f.text_field "room_occupants"%></td>
+    </tr>
+    <tr>
+      <td><%= f.label "room_extra_occupants" %></td>
+      <td><%= f.text_field "room_extra_occupants"%></td>
+    </tr>
+    <tr>
+      <td><%= f.label "room_extra_bed_charge" %></td>
+      <td><%= f.text_field "room_extra_bed_charge"%></td>
+    </tr>
+    <tr>
+      <td><%= f.label "room_rate" %></td>
+      <td><%= f.text_field "room_rate"%></td>
+    </tr>
+    <tr>
+      <td><%= f.label "room_extra_person_charge" %></td>
+      <td><%= f.text_field "room_extra_person_charge"%></td>
+    </tr>
+  </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

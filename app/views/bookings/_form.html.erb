@@ -1,0 +1,66 @@
+<%= form_for(@booking) do |f| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% @booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table class="table">
+  <tr>
+    <td><%= f.label "lodge_id", "Lodge" %> </td>
+    <td><%= f.collection_select(:lodge_id, Lodge.all, :id, :name) %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "room_id", "Room" %> </td>
+    <td><%= f.collection_select(:room_id, Room.all, :id, :room_number) %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "checkin_date" %></td>
+    <td><%= f.text_field "checkin_date", class: "datepicker" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "checkin_time" %></td>
+    <td><%= f.text_field "checkin_time", class: "timepicker" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "checkout_date" %></td>
+    <td><%= f.text_field "checout_date", class: "datepicker" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "checkout_time" %></td>
+    <td><%= f.text_field "checkout_time", class: "timepicker" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "no_of_days"%></td>
+    <td><%= f.text_field "no_of_days" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "adult_count" %></td>
+    <td><%= f.text_field "adult_count" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "children_count" %></td>
+    <td><%= f.text_field "children_count" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "total_amount" %></td>
+    <td><%= f.text_field "total_amount" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "status" %></td>
+    <td><%= f.select(:status, Booking::BOOKING_STATUS) %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><div class="actions">
+    <%= f.submit %>
+  </div></td>
+  </tr>
+</table>
+  
+<% end %>

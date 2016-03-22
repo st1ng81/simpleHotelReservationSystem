@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lodges</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Landline</th>
+      <th>Mobile</th>
+      <th>Manager Name</th>
+      <th>Manager Phone</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lodges.each do |lodge| %>
+      <tr>
+        <td><%= lodge.name %></td>
+        <td><%= lodge.address %></td>
+        <td><%= lodge.landline %></td>
+        <td><%= lodge.mobile %></td>
+        <td><%= lodge.manager_name %></td>
+        <td><%= lodge.manager_phone %></td>
+        <td><%= link_to 'Show', lodge %></td>
+        <td><%= link_to 'Edit', edit_lodge_path(lodge) %></td>
+        <td><%= link_to 'Destroy', lodge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lodge', new_lodge_path %>

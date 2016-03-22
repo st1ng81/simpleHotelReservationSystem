@@ -1,0 +1,38 @@
+<%= form_for(@room_type) do |f| %>
+  <% if @room_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@room_type.errors.count, "error") %> prohibited this room_type from being saved:</h2>
+
+      <ul>
+      <% @room_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class="table">
+    <tr>
+      <td><%= f.label "room_type" %></td>
+      <td><%= f.text_field "room_type" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "hotel_id", "Lodge name" %></td>
+      <td>
+        <%= f.collection_select(:lodge_id, Lodge.all, :id, :name) %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label "total_rooms" %></td>
+      <td><%= f.text_field "total_rooms" %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div class="actions">
+    <%= f.submit %>
+  </div>
+      </td>
+    </tr>
+  </table>
+  
+<% end %>

@@ -1,0 +1,48 @@
+<%= form_for(@lodge) do |f| %>
+  <% if @lodge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lodge.errors.count, "error") %> prohibited this lodge from being saved:</h2>
+
+      <ul>
+      <% @lodge.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class="table">
+    <tr>
+      <td><%= f.label "name" %></td>
+      <td><%= f.text_field "name" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "address" %></td>
+      <td><%= f.text_area "address" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "landline" %></td>
+      <td><%= f.text_field "landline" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "mobile" %></td>
+      <td><%= f.text_field "mobile" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "manager_name" %></td>
+      <td><%= f.text_field "manager_name" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "manager_phone" %></td>
+      <td><%= f.text_field "manager_phone" %></td>
+    </tr>
+  
+  <tr>
+    <td></td>
+    <td>
+  <div class="actions">
+    <%= f.submit %>
+  </td>
+  </div>
+</tr>
+  </table>
+<% end %>
